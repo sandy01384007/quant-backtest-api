@@ -1,3 +1,4 @@
+import os
 """
 api_server.py — 量化策略回测 REST API (FastAPI)
 
@@ -8,7 +9,8 @@ api_server.py — 量化策略回测 REST API (FastAPI)
   GET  /docs           — API 文档 (Swagger UI)
 
 部署：
-  uvicorn api_server:app --host 0.0.0.0 --port 8000
+  port = int(os.environ.get("PORT", 8000))
+     uvicorn.run(app, host="0.0.0.0", port=port)
 """
 from __future__ import annotations
 
@@ -244,5 +246,7 @@ async def get_backtest_result(task_id: str):
 # ---------- 直接入口 ----------
 
 if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+      import os
+      import uvicorn
+      port = int(os.environ.get("PORT", 8000))
+      uvicorn.run(app, host="0.0.0.0", port=port)
