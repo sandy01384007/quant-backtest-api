@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+*.egg-info/
+.env
+output/
+*.png
+*.html
+.DS_Store
