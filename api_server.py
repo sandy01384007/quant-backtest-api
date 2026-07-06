@@ -1,4 +1,3 @@
-import os
 """
 api_server.py — 量化策略回测 REST API (FastAPI)
 
@@ -9,8 +8,7 @@ api_server.py — 量化策略回测 REST API (FastAPI)
   GET  /docs           — API 文档 (Swagger UI)
 
 部署：
-  port = int(os.environ.get("PORT", 8000))
-     uvicorn.run(app, host="0.0.0.0", port=port)
+  uvicorn api_server:app --host 0.0.0.0 --port 8000
 """
 from __future__ import annotations
 
@@ -249,4 +247,6 @@ if __name__ == "__main__":
     import os
     import uvicorn
     port = int(os.environ.get("PORT", 8000))
+    print(f"DEBUG: PORT env = {os.environ.get('PORT', 'NOT SET')}", flush=True)
+    print(f"DEBUG: Binding to 0.0.0.0:{port}", flush=True)
     uvicorn.run(app, host="0.0.0.0", port=port)
